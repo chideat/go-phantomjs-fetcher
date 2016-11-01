@@ -12,5 +12,5 @@ type Response struct {
 	Content        string            `json:"content"`
 	Cookies        []http.Cookie     `json:"cookies"`
 	Time           float64           `json:"time"`
-	JsScriptResult string
+	JsScriptResult string		 `json:"js_script_result"`
 }

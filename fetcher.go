@@ -191,8 +191,18 @@ func (this *Fetcher) checkFetcherJS() (string, error) {
 	} else {
 		paths = strings.Split(str, ";")
 	}
+	for n, path := range paths{
+		paths[n] = path + "/src"
+	}
+
+	workingDir, err := os.Getwd()
+	if err != nil {
+		return  "", err
+	}
+
+	paths = append(paths, workingDir+"/vendor")
 	for _, path := range paths {
-		fetcherJSPath := path + "/src/github.com/hldh214/go-phantomjs-fetcher/phantomjs_fetcher.js"
+		fetcherJSPath := path + "/github.com/ikkeps/go-phantomjs-fetcher/phantomjs_fetcher.js"
 		if this.exist(fetcherJSPath) {
 			return fetcherJSPath, nil
 		}
